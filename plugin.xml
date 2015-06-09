@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin id="us.cordova.swrve" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>CordovaSwrve</name>
+    <description>Swrve Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>Login,Swrve</keywords>
+    <repo>https://github.com/leandroz/cordova-swrve.git</repo>
+    <issue>https://github.com/leandroz/cordova-swrve/issues</issue>
+
+  <js-module name="CordovaSwrve" src="www/CordovaSwrve.js">
+    <clobbers target="cordova.plugins.CordovaSwrve" />
+  </js-module>
+
+  <!-- android -->
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="CordovaSwrve">
+        <param name="android-package" value="us.cordova.swrve.CordovaSwrve" />
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.INTERNET" />
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    </config-file>
+
+    <source-file src="src/android/CordovaSwrve.java" target-dir="src/us/cordova/swrve" />
+    <source-file src="src/android/Swrve_Android_SDK/SwrveGoogleSDK.jar" target-dir="libs" />
+
+  </platform>
+
+  <!-- ios -->
+  <platform name="ios">
+
+    <config-file parent="/*" target="config.xml">
+      <feature name="CordovaSwrve">
+        <param name="ios-package" value="CordovaSwrve" />
+      </feature>
+    </config-file>
+    <source-file src="src/ios/CordovaSwrve.m" />
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveButton.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveButton.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveCampaign.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveCampaign.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveImage.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveImage.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveInterfaceOrientation.h" />
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveMessage.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveMessage.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveMessageController.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveMessageController.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveMessageFormat.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveMessageFormat.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveMessageViewController.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveMessageViewController.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveTalkQA.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Talk/SwrveTalkQA.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/Swrve.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/Swrve.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveReceiptProvider.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveReceiptProvider.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveResourceManager.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveResourceManager.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveSignatureProtectedFile.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveSignatureProtectedFile.m" compiler-flags="-fobjc-arc"/>
+
+    <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveSwizzleHelper.h" />
+    <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveSwizzleHelper.m" compiler-flags="-fobjc-arc"/> 
+
+    <framework src="CFNetwork.framework" />
+    <framework src="StoreKit.framework" />
+    <framework src="Security.framework" />
+    <framework src="QuartzCore.framework" />
+    <framework src="CoreTelephony.framework" />
+    <framework src="AVFoundation.framework" />
+    <framework src="UIKit.framework" />
+      
+  </platform>
+
+</plugin>
