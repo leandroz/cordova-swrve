@@ -14,6 +14,37 @@
 
 @implementation CordovaSwrve
 
+
+// CDV Plugin commands
+- (void)initialize:(CDVInvokedUrlCommand*)command
+{
+    NSLog(@"initialize");
+    int appId = [[command.arguments objectAtIndex:0] intValue];
+    NSString* apiKey = [command.arguments objectAtIndex:1];
+    [Swrve sharedInstanceWithAppID:appId apiKey:apiKey];
+}
+
+- (void)sendEventWithPayload:(CDVInvokedUrlCommand*)command
+{
+    NSString* eventName = [command.arguments objectAtIndex:0];
+    NSDictionary* eventPayload = nil;
+
+    int result;
+
+    if([command.arguments objectAtIndex:1] != [NSNull null]){
+        eventPayload = [command.arguments objectAtIndex:1];
+        result = [[Swrve sharedInstance] event:eventName payload:eventPayload];
+    } else {
+        result = [[Swrve sharedInstance] event:eventName];
+    }
+    
+    NSLog(@"Result: %d", result);
+
+}
+
+@end
+
+/*
 + (void)load
 {
      NSLog(@"load");
@@ -33,13 +64,7 @@
 
 + (void)didFinishLaunching:(NSNotification*)notification {
      NSLog(@"didFinishLaunching");
-    //[Swrve sharedInstanceWithAppID:<app_id> apiKey:@"<api_key>"];
 }
 
-// CDV Plugin commands
-- (void)initialize:(CDVInvokedUrlCommand*)command
-{
-    NSLog(@"initialize");
-}
 
-@end
+*/

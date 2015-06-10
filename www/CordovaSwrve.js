@@ -4,12 +4,20 @@ var argscheck = require('cordova/argscheck'),
 
 module.exports = {
 
-	initialize: function(echo) {
+	initialize: function(app_id, api_key) {
 		console.log('initialize');
 		exec(null,
 			null,
 			"CordovaSwrve",
-			"initialize", [echo]);
+			"initialize", [app_id, api_key]);
+	},
+
+	sendEventWithPayload: function(event_name, payload) {
+		console.log('sendEventWithPayload');
+		exec(null,
+			null,
+			"CordovaSwrve",
+			"sendEventWithPayload", [event_name, payload]);
 	}
 
 };

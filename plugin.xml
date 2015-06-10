@@ -24,7 +24,7 @@
 
     <config-file target="AndroidManifest.xml" parent="/*">
       <uses-permission android:name="android.permission.INTERNET" />
-      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     </config-file>
 
     <source-file src="src/android/CordovaSwrve.java" target-dir="src/us/cordova/swrve" />
@@ -34,6 +34,19 @@
 
   <!-- ios -->
   <platform name="ios">
+
+    <info>
+        Swrve SDK for iOS
+    </info>
+      
+    <!-- system frameworks -->
+    <framework src="CFNetwork.framework" />
+    <framework src="StoreKit.framework" />
+    <framework src="Security.framework" />
+    <framework src="QuartzCore.framework" />
+    <framework src="CoreTelephony.framework" />
+    <framework src="AVFoundation.framework" />
+    <framework src="UIKit.framework" />
 
     <config-file parent="/*" target="config.xml">
       <feature name="CordovaSwrve">
@@ -82,14 +95,6 @@
 
     <header-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveSwizzleHelper.h" />
     <source-file src="src/ios/Swrve_iOS_SDK/Sdk/Track/SwrveSwizzleHelper.m" compiler-flags="-fobjc-arc"/> 
-
-    <framework src="CFNetwork.framework" />
-    <framework src="StoreKit.framework" />
-    <framework src="Security.framework" />
-    <framework src="QuartzCore.framework" />
-    <framework src="CoreTelephony.framework" />
-    <framework src="AVFoundation.framework" />
-    <framework src="UIKit.framework" />
       
   </platform>
 
